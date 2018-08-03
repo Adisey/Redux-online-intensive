@@ -14,9 +14,6 @@ import { FILL_POSTS } from './types';
 
 const initalState = List ();
 
-// const list1 = List([1,2,3]);
-// console.log(`list1 - `, list1);
-
 
 export const postsReducer = (state = initalState, action) => {
     switch (action.type) {

@@ -7,7 +7,9 @@
  */
 
 import { FETCH_POSTS_ASYNC, FILL_POSTS } from "./types";
-// ToDo: Спросить у Димы Зачем это масло масленное
+
+// Instruments
+import { api } from '../../REST/';
 
 export const fillPosts = (posts) => {
     return {
@@ -16,10 +18,15 @@ export const fillPosts = (posts) => {
     };
 };
 
-export const fetchPostsAsync = () => (dispatch) => {
-    dispatch({
+export const fetchPostsAsync = () => async (dispatch) => {
+    dispatch ({
         type: FETCH_POSTS_ASYNC,
     });
+
+    const response = await api.posts.fetch ();
+    const result = await response.json ();
+
+    dispatch (fillPosts (result.data));
 };
 
 

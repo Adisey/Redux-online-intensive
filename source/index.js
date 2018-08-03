@@ -6,12 +6,12 @@ import  { BrowserRouter as Router }  from 'react-router-dom';
 // Instruments
 import './theme/init';
 
-// Intro
-import Gallery from './basic-redux';
+// App
+import App from './navigation/App';
 
 render(
     <Router>
-        <Gallery />
+        <App />
     </Router>,
     document.getElementById('app')
 );

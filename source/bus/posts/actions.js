@@ -22,7 +22,6 @@ export const fetchPostsAsync = () => async (dispatch) => {
     dispatch ({
         type: FETCH_POSTS_ASYNC,
     });
-
     const response = await api.posts.fetch ();
     const result = await response.json ();
 

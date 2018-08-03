@@ -6,7 +6,7 @@
  * Time: 17:49
  */
 
-import { FETCH_POSTS_ASYNC, FILL_POSTS} from "./types";
+import { FETCH_POSTS_ASYNC, FILL_POSTS } from "./types";
 // ToDo: Спросить у Димы Зачем это масло масленное
 
 export const fillPosts = (posts) => {
@@ -16,10 +16,10 @@ export const fillPosts = (posts) => {
     };
 };
 
-export const fetchPostsAsync = () => {
-    return {
+export const fetchPostsAsync = () => (dispatch) => {
+    dispatch({
         type: FETCH_POSTS_ASYNC,
-    };
+    });
 };
 
 

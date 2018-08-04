@@ -1,7 +1,7 @@
 // Core
 import React, { Component } from 'react';
-import  { connect }  from 'react-redux';
-import  { bindActionCreators }  from 'redux';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { List } from 'immutable';
 import FlipMove from 'react-flip-move';
 
@@ -13,10 +13,10 @@ import { mockedProfile } from '../../instruments/mockedData';
 import { Composer, Catcher, Post } from '../../components';
 
 //Actionns
-import  { fetchPostsAsync }  from '../../bus/posts/actions';
+import { fetchPostsAsync, createPostAsync } from '../../bus/posts/actions';
 
 const mapStateToProps = (state) => {
-    console.log(`-> state`, state);
+    console.log (`-> state`, state);
     return {
         posts: state.posts,
     };
@@ -24,7 +24,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        actions: bindActionCreators({fetchPostsAsync}, dispatch),
+        actions: bindActionCreators ({ fetchPostsAsync, createPostAsync }, dispatch),
     };
 };
 
@@ -38,34 +38,34 @@ export default class Posts extends Component {
         profile: mockedProfile,
     };
 
-    componentDidMount () {
+    componentDidMount() {
         const { actions } = this.props;
 
-        actions.fetchPostsAsync();
+        actions.fetchPostsAsync ();
     }
 
-    render () {
+    render() {
         const { actions, posts, profile } = this.props;
 
-        const postsJSX = posts.map((post) => {
+        const postsJSX = posts.map ((post) => {
             return (
-                <Catcher key = { post.get('id') }>
+                <Catcher key={post.get ('id')}>
                     <Post
-                        actions = { actions }
-                        author = { post.get('author') }
-                        comment = { post.get('comment') }
-                        created = { post.get('created') }
-                        id = { post.get('id') }
-                        likes = { post.get('likes') }
-                        profile = { profile }
+                        actions={actions}
+                        author={post.get ('author')}
+                        comment={post.get ('comment')}
+                        created={post.get ('created')}
+                        id={post.get ('id')}
+                        likes={post.get ('likes')}
+                        profile={profile}
                     />
                 </Catcher>
             );
         });
 
         return (
-            <section className = { Styles.posts }>
-                <Composer actions = { actions } profile = { profile } />
+            <section className={Styles.posts}>
+                <Composer actions={actions} profile={profile}/>
                 <FlipMove>{postsJSX}</FlipMove>
             </section>
         );

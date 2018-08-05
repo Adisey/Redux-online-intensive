@@ -6,7 +6,12 @@
  * Time: 10:44
  */
 
-export function* rootSaga () {
-    yield console.log(`init Saga ->`);
+//Core
+import  { all, call }  from 'redux-saga/effects';
 
+// Wethers
+import  { watcherPosts }  from '../bus/posts/saga/watchers';
+
+export function* rootSaga () {
+    yield all([call(watcherPosts)]);
 }

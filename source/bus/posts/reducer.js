@@ -10,21 +10,19 @@
 import { fromJS, List } from 'immutable';
 
 // Instruments
-import { ADD_POST, FILL_POSTS } from './types';
+import { type } from './types';
 
-const initalState = List ();
-
+const initalState = List();
 
 export const postsReducer = (state = initalState, action) => {
     switch (action.type) {
-        case FILL_POSTS:
-            return fromJS (action.payload);
+        case type.FILL_POSTS:
+            return fromJS(action.payload);
 
-        case ADD_POST:
-            return state.unshift(fromJS (action.payload));
+        case type.CREATE_POST:
+            return state.unshift(fromJS(action.payload));
 
         default:
             return state;
     }
 };
-

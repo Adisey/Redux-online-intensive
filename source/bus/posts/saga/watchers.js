@@ -10,13 +10,13 @@
 import { takeEvery, all, call } from 'redux-saga/effects';
 
 // Types
-import { CREATE_POST_ASYNC } from '../types';
+import { type } from '../types';
 
 // Workers
 import { createPost } from './workers';
 
 function* watcherCratePost () {
-    yield takeEvery(CREATE_POST_ASYNC, createPost);
+    yield takeEvery(type.CREATE_POST_ASYNC, createPost);
 }
 export function* watcherPosts () {
     yield all([call(watcherCratePost)]);

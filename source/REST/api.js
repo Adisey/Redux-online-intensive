@@ -18,7 +18,7 @@ export const api = {
                 method: 'GET',
                 headers: {
                     'x-no-auth': groupId,
-                }
+                },
             });
         },
         create(comment) {

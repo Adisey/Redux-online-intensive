@@ -9,7 +9,7 @@
 import { type } from "./types";
 
 // Instruments
-import { api } from '../../REST/';
+// import { api } from '../../REST/';
 
 export const postsActions ={
     fillPosts: (posts) => {
@@ -18,14 +18,14 @@ export const postsActions ={
             payload: posts,
         };
     },
-    fetchPostsAsync: () => async (dispatch) => {
-        dispatch({
-            type: type.FETCH_POSTS_ASYNC,
-        });
-        const response = await api.posts.fetch();
-        const result = await response.json();
-
-        dispatch(postsActions.fillPosts(result.data));
+    fetchPostsAsync: (posts) => {
+        return {
+            type:    type.FETCH_POSTS_ASYNC,
+            payload: posts,
+        };
+        // const response = await api.posts.fetch();
+        // const result = await response.json();
+        // dispatch(postsActions.fillPosts(result.data));
     },
     createPost: (post) => {
         return {
@@ -42,9 +42,3 @@ export const postsActions ={
     },
 
 };
-
-
-// ToDo: Перевести Получение посов с Redux Tank на  Redux Sags
-// ToDo: Action (fillPosts  и fetchPostsAsync )
-// ToDo: Обработук перевести в Worker Saga
-// ToDo: Make Wotcher for new Worker

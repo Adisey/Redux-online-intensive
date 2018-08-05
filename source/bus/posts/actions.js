@@ -42,3 +42,9 @@ export const postsActions ={
     },
 
 };
+
+
+// ToDo: Перевести Получение посов с Redux Tank на  Redux Sags
+// ToDo: Action (fillPosts  и fetchPostsAsync )
+// ToDo: Обработук перевести в Worker Saga
+// ToDo: Make Wotcher for new Worker

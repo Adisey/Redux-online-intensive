@@ -30,5 +30,4 @@ export function* createPost ({ payload: comment }) {
         yield put(uiActions.stopFetching());
 
     }
-
 }

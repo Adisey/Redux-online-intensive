@@ -7,7 +7,7 @@ import cx from 'classnames';
 import Styles from './styles.m.css';
 
 //Store
-import { store } from '../../init/store';
+import { store } from '../../initGallery/store';
 
 // Actions
 import { showNextPhoto, showSelectedPhoto, showPreviousPhoto } from '../../bus/gallery/actions';

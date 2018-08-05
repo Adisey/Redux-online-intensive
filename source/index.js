@@ -6,7 +6,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 
 // Instruments
 import { store } from './bus/init/store';
-import './theme/init';
+import './theme/initGallery';
 
 // App
 import App from './navigation/App';

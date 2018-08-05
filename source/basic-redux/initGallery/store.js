@@ -11,7 +11,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import { createLogger } from 'redux-logger';
 
 // Reducer
-import { rootReducer } from './rootRedicer';
+import { rootReducer } from './rootReducer';
 
 const logger = createLogger({
     duration: true,

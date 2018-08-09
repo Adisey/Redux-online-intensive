@@ -11,17 +11,16 @@ export function* signup ({ payload: userInfo }) {
     try {
         yield put(uiActions.startFetching());
         console.log(`userInfo ------->`, userInfo);
-        yield delay(2000);
+
+        const response = yield apply(api, api.auth.signup, [userInfo]);
+        const { data: profile, message } = yield apply(response, response.json);
+
+        if (response.status !== 200) {
+            throw new Error(message);
+        }
+        console.log(`profile ->`, profile);
 
         yield put(authAction.authenticate());
-
-        // const response = yield apply(api, api.posts.fetch);
-        // const { data: posts, message } = yield apply(response, response.json);
-
-        // if (response.status !== 200) {
-        //     throw new Error(message);
-        // }
-
     } catch (error) {
         yield put(uiActions.emitError(error, 'signup worker'));
     } finally {

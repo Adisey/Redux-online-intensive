@@ -1,6 +1,6 @@
 import { type } from "./types";
 
-export const postsActions ={
+export const authAction ={
     //Sync
     authenticate: () => {
         return {

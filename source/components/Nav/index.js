@@ -19,8 +19,8 @@ const mapStateToProps = (state) => {
 export default class Nav extends Component {
     static defaultProps = {
         // State
-        profile:         mockedProfile,
-        isOnline:        false,
+        profile:  mockedProfile,
+        isOnline: false,
 
         // Actions
         logoutAsync: () => {},

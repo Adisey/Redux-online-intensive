@@ -2,7 +2,7 @@
 import { put, apply } from 'redux-saga/effects';
 
 import { api } from "../../../../REST/index";
-import { loginActions } from '../../../login/actions';
+import { authAction } from '../../../auth/actions';
 import { uiActions } from '../../../ui/actions';
 import { profileActions } from "../../../profile/actions";
 
@@ -19,7 +19,7 @@ export function* login ({ payload: userInfo }) {
         }
         console.log(`Login profile ->`, profile);
         yield put(profileActions.fillProfile(profile));
-        yield put(loginActions.authenticatel());
+        yield put(authAction.authenticate());
     } catch (error) {
         yield put(uiActions.emitError(error, 'Login worker'));
     } finally {

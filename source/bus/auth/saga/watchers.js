@@ -14,3 +14,11 @@ function* watchSignup () {
 export function* watchAuth () {
     yield all([call(watchSignup)]);
 }
+
+function* watchLogin () {
+    yield takeEvery(type.LOGIN_ASYNC, login);
+}
+
+export function* watchAuthL () {
+    yield all([call(watchLogin)]);
+}

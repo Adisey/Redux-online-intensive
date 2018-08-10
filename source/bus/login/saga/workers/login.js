@@ -27,3 +27,4 @@ export function* login ({ payload: userInfo }) {
 
     }
 }
+

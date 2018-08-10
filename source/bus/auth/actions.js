@@ -1,4 +1,4 @@
-import { type } from "./types";
+import { type } from './types';
 
 export const authAction ={
     //Sync

@@ -1,7 +1,7 @@
 // Core
 import { put, apply } from 'redux-saga/effects';
 
-import { api } from "../../../../REST/index";
+import { api } from '../../../../REST/index';
 import { authAction } from '../../../auth/actions';
 import { uiActions } from '../../../ui/actions';
 import { profileActions } from "../../../profile/actions";

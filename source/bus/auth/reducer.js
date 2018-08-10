@@ -11,10 +11,6 @@ export const authReducer = (state = initalState, action) => {
     switch (action.type) {
         case type.AUTHENTICATE:
             return state.set('isAuthenticated', true);
-        case type.LOGIN:
-            return state.set('isAuthenticated', true);
-
-
         default:
             return state;
     }

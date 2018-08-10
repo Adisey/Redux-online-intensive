@@ -15,7 +15,6 @@ export const authAction ={
         };
     },
     loginAsync: (userData) => {
-        console.log(`userData ->`, userData);
         return {
             type:    type.LOGIN_ASYNC,
             payload: userData,

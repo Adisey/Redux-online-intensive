@@ -7,7 +7,7 @@ export const login = {
     shape: {
         email:    'as@g.mail',
         password: '123456',
-        remember: true,
+        remember: false,
     },
     schema: object().shape({
         email: string()

@@ -13,6 +13,7 @@ import { authAction } from '../../bus/auth/actions';
 
 const mapStateToProps = (state) => {
     console.log(`state (Login) ->`, state);
+
     return {
         isFetching: state.ui.get('isFetching'),
     };
@@ -23,14 +24,6 @@ const mapDispathToProps = {
 
 @connect(mapStateToProps, mapDispathToProps)
 export default class LoginForm extends Component {
-    // static defaultProps = {
-    //     // State
-    //     isFetching: false,
-    //
-    //     // Actions
-    //     loginAsync: () => {},
-    // };
-    //
     _submitLoginForm = (user) => {
         console.log(`user ->`, user);
         this.props.loginAsync(user);

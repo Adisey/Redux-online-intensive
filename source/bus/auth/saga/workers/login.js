@@ -9,15 +9,12 @@ import { profileActions } from "../../../profile/actions";
 export function* login ({ payload: userInfo }) {
     try {
         yield put(uiActions.startFetching());
-        console.log(`Login userInfo ------->`, userInfo);
-
         const response = yield apply(api, api.user.login, [userInfo]);
         const { data: profile, message } = yield apply(response, response.json);
 
         if (response.status !== 200) {
             throw new Error(message);
         }
-        console.log(`Login profile ->`, profile);
         yield put(profileActions.fillProfile(profile));
         yield put(authAction.authenticate());
     } catch (error) {

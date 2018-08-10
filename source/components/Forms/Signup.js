@@ -12,6 +12,7 @@ import { signup } from '../../bus/forms/shapes';
 import { authAction } from '../../bus/auth/actions';
 
 const mapStateToProps = (state) => {
+    console.log(`state (Signup)->`, state);
     return {
         isFetching: state.ui.get('isFetching'),
     };
@@ -29,6 +30,9 @@ export default class SignupForm extends Component {
 
     render () {
         const { isFetching } = this.props;
+
+        console.log(`isFetching (Signup) ->`, isFetching);
+        console.log(`this.props (Signup) ->`, this.props);
 
         return (
             <Formik

@@ -2,12 +2,12 @@
 import { object, string, boolean } from 'yup';
 
 // Instruments
-import  { invite }  from '../../REST';
+import { invite } from '../../REST';
 export const login = {
     shape: {
-        email:    '',
-        password: '',
-        remember: false,
+        email:    'as@g.mail',
+        password: '123456',
+        remember: true,
     },
     schema: object().shape({
         email: string()
@@ -26,7 +26,7 @@ export const signup = {
         lastName:  'Sss',
         email:     'as@g.mail',
         password:  '123456',
-        invite
+        invite,
     },
     schema: object().shape({
         firstName: string().required(),

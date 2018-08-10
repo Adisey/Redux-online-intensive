@@ -1,4 +1,3 @@
-
 // Core
 import { put, apply } from 'redux-saga/effects';
 
@@ -10,7 +9,7 @@ import { profileActions } from '../../../profile/actions';
 export function* signup ({ payload: userInfo }) {
     try {
         yield put(uiActions.startFetching());
-        console.log(`userInfo ------->`, userInfo);
+        console.log(`Signup userInfo ------->`, userInfo);
 
         const response = yield apply(api, api.auth.signup, [userInfo]);
         const { data: profile, message } = yield apply(response, response.json);
@@ -18,7 +17,7 @@ export function* signup ({ payload: userInfo }) {
         if (response.status !== 200) {
             throw new Error(message);
         }
-        console.log(`profile ->`, profile);
+        console.log(`Signup profile ->`, profile);
         yield put(profileActions.fillProfile(profile));
         yield put(authAction.authenticate());
     } catch (error) {

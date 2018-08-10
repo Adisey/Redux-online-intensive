@@ -11,6 +11,17 @@
 import { MAIN_URL, groupId } from './config';
 
 export const api = {
+    user: {
+        login (userInfo) {
+            return fetch(`${MAIN_URL}/user/login`, {
+                method:  'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(userInfo),
+            });
+        },
+    },
     auth: {
         signup (userInfo) {
             return fetch(`${MAIN_URL}/user/${groupId}`, {

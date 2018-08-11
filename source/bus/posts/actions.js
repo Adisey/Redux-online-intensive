@@ -12,25 +12,29 @@ import { type } from "./types";
 // import { api } from '../../REST/';
 
 export const postsActions ={
+    // Sync
     fillPosts: (posts) => {
         return {
             type:    type.FILL_POSTS,
             payload: posts,
         };
     },
-    fetchPostsAsync: (posts) => {
-        return {
-            type:    type.FETCH_POSTS_ASYNC,
-            payload: posts,
-        };
-        // const response = await api.posts.fetch();
-        // const result = await response.json();
-        // dispatch(postsActions.fillPosts(result.data));
-    },
     createPost: (post) => {
         return {
             type:    type.CREATE_POST,
             payload: post,
+        };
+    },
+    clearPosts: () => {
+        return {
+            type: type.CLEAR_POSTS,
+        };
+    },
+    // Async
+    fetchPostsAsync: (posts) => {
+        return {
+            type:    type.FETCH_POSTS_ASYNC,
+            payload: posts,
         };
     },
     createPostAsync: (comment) => {

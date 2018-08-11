@@ -31,11 +31,6 @@ export default class LoginForm extends Component {
 
     render () {
         const { isFetching } = this.props;
-
-        console.log(`isFetching (Login) ->`, isFetching);
-        console.log(`this.props (Login) ->`, this.props);
-        console.log(`login.shape ->`, login.shape);
-
         return (
             <Formik
                 initialValues = { login.shape }

@@ -1,11 +1,13 @@
 // Core
 import { put, apply } from 'redux-saga/effects';
+import { replace } from 'react-router-redux';
 
 import { api } from '../../../../REST/index';
 import { authAction } from '../../../auth/actions';
 import { uiActions } from '../../../ui/actions';
 import { profileActions } from "../../../profile/actions";
 import { postsActions } from "../../../posts/actions";
+import { book } from '../../../../navigation/book';
 
 export function* logout () {
     try {
@@ -27,5 +29,6 @@ export function* logout () {
         yield put(postsActions.clearPosts());
         yield put(uiActions.stopFetching());
         yield put(authAction.logout());
+        yield put(replace(book.login));
     }
 }

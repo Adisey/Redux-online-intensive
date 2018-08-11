@@ -13,10 +13,15 @@ export function* authenticate () {
         const { data: profile, message } = yield apply(response, response.json);
 
         if (response.status !== 200) {
+            if (response.status === 401) {
+                yield apply(localStorage, localStorage.removeItem, ['token']);
+                yield apply(localStorage, localStorage.removeItem, ['remember']);
+
+                return null;
+            }
             throw new Error(message);
         }
         yield apply(localStorage, localStorage.setItem, ['token', profile.token]);
-
         yield put(profileActions.fillProfile(profile));
         yield put(authAction.authenticate());
     } catch (error) {

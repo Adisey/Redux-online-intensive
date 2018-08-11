@@ -23,6 +23,7 @@ export function* authenticate () {
         yield put(uiActions.emitError(error, 'Authenticate worker'));
     } finally {
         yield put(uiActions.stopFetching());
+        yield put(authAction.initialialze());
 
     }
 }

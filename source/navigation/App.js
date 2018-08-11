@@ -8,16 +8,29 @@ import { withRouter } from 'react-router-dom';
 import Private from './Private';
 import Public from './Public';
 
+// Actions
+import { authAction } from '../bus/auth/actions';
+
 const mapStateToProps = (state) => {
     return {
         isAuthenticated: state.auth.get('isAuthenticated'),
     };
 };
 
+const mapDispatchToProps = {
+    authenticateAsync: authAction.authenticateAsync,
+};
+
 @hot(module)
 @withRouter
-@connect(mapStateToProps)
+@connect(
+    mapStateToProps,
+    mapDispatchToProps
+)
 export default class App extends Component {
+    componentDidMount () {
+        this.props.authenticateAsync();
+    }
     render () {
         const { isAuthenticated } = this.props;
 

@@ -20,4 +20,10 @@ export const authAction ={
             payload: userData,
         };
     },
+    authenticateAsync: (userData) => {
+        return {
+            type:    type.AUTHENTICATE_ASYNC,
+            payload: userData,
+        };
+    },
 };

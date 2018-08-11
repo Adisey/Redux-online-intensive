@@ -22,3 +22,4 @@ function* watchAuthenticate () {
 export function* watchAuth () {
     yield all([call(watchLogin), call(watchSignup), call(watchAuthenticate)]);
 }
+

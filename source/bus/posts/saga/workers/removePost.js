@@ -13,19 +13,18 @@ import { api } from '../../../../REST';
 import { postsActions } from '../../actions';
 import { uiActions } from '../../../ui/actions';
 
-export function* createPost ({ payload: comment }) {
+export function* removePost ({ payload: postId }) {
     try {
         yield put(uiActions.startFetching());
 
-        const response = yield apply(api, api.posts.create, [comment]);
-        const { data: post, message } = yield apply(response, response.json);
+        const response = yield apply(api, api.posts.remove, [postId]);
 
-        if (response.status !== 200) {
+        if (response.status !== 204) {
             throw new Error(message);
         }
-        yield put(postsActions.createPost(post));
+        yield put(postsActions.removePost(postId));
     } catch (error) {
-        yield put(uiActions.emitError(error, 'createPost worker'));
+        yield put(uiActions.emitError(error, 'removePost worker'));
     } finally {
         yield put(uiActions.stopFetching());
 

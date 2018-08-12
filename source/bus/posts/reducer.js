@@ -22,6 +22,22 @@ export const postsReducer = (state = initalState, action) => {
             return state.unshift(fromJS(action.payload));
         case type.CLEAR_POSTS:
             return state.clear();
+        case type.REMOVE_POST:
+            console.log(`state ->`, state);
+            console.log(`action.payload ->`, action.payload);
+            state.map((post) =>{
+                // debugger;
+                console.log(`post ->`, post);
+                post.map((el)=>{
+                    console.log(`el ->`, el);
+                });
+            });
+            // const newState = state.filter(({post})=> post.id !== action.payload);
+            // console.log(`newState ->`, newState);
+            return state;
+            //return state.unshift(fromJS(action.payload));
+            // ToDo: Реализовать удаление поста
+
         default:
             return state;
     }

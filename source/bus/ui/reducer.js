@@ -4,7 +4,7 @@ import { Map } from 'immutable';
 import { type } from './types';
 
 const initalState = Map({
-    isFatching: false,
+    isFetching: false,
 });
 
 export const uiReducer = (state = initalState, action) => {

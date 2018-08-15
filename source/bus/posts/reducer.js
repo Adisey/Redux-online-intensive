@@ -25,7 +25,7 @@ export const postsReducer = (state = initalState, action) => {
         case type.REMOVE_POST:
             return state.filter((post) => post.get('id') !== action.payload);
         case type.LIKE_POST:
-        return state.updateIn(
+            return state.updateIn(
                 [state.findIndex((post) => {
                     return post.get('id') === action.payload.postId;
                 }),
@@ -33,6 +33,18 @@ export const postsReducer = (state = initalState, action) => {
                 ],
                 (likes) => {
                     return likes.unshift(action.payload.liker);
+                }
+            );
+        case type.UNLIKE_POST:
+            return state.updateIn(
+                [state.findIndex((post) => {
+                    return post.get('id') === action.payload.postId;
+                }),
+                'likes'
+                ],
+                (likes) => {
+                    return likes.filter((like) => like.get('id') !== action.payload.liker);
+                    //
                 }
             );
         default:

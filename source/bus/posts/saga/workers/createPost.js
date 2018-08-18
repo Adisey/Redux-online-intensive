@@ -25,7 +25,7 @@ export function* createPost ({ payload: comment }) {
         }
         yield put(postsActions.createPost(post));
     } catch (error) {
-        yield put(uiActions.emitError(error, 'createPost worker'));
+        yield put(uiActions.emitError(error, 'createPost fetchUsers'));
     } finally {
         yield put(uiActions.stopFetching());
 

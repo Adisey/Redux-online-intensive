@@ -65,7 +65,7 @@ export const api = {
                 method:  'POST',
                 headers: {
                     'Authorization': this.token,
-                    'Content-Type': 'application/json',
+                    'Content-Type':  'application/json',
                 },
                 body: JSON.stringify({ comment }),
             });
@@ -87,6 +87,14 @@ export const api = {
             });
         },
     },
+    users: {
+        fetch () {
+            return fetch(`${MAIN_URL}/user/all`, {
+                method:  'GET',
+                headers: {
+                    'Authorization': this.token,
+                },
+            });
+        },
+    },
 };
-
-

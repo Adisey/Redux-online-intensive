@@ -24,7 +24,7 @@ export function* removePost ({ payload: postId }) {
         }
         yield put(postsActions.removePost(postId));
     } catch (error) {
-        yield put(uiActions.emitError(error, 'removePost worker'));
+        yield put(uiActions.emitError(error, 'removePost fetchUsers'));
     } finally {
         yield put(uiActions.stopFetching());
 

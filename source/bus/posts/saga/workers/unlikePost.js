@@ -31,7 +31,7 @@ export function* unLikePost({ payload: postId }) {
         yield put (postsActions.unLikePost ({ liker, postId }));
     }
     catch (error) {
-        yield put (uiActions.emitError (error, 'unLikePost worker'));
+        yield put (uiActions.emitError (error, 'unLikePost fetchUsers'));
     }
     finally {
         yield put (uiActions.stopFetching ());

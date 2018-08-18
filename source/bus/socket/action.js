@@ -9,6 +9,7 @@
 // Actions
 import { socket } from '../../init/socket';
 import { uiActions } from '../ui/actions';
+import { postsActions } from '../posts/actions';
 
 export const socketActions = {
     listenConnection: () => (dispatch) => {
@@ -17,6 +18,16 @@ export const socketActions = {
         });
         socket.on('disconnect', () => {
             dispatch(uiActions.setOfflineState());
+        });
+    },
+    listenPosts: () => (dispatch) => {
+        socket.on('create', (event) => {
+            const { data: post }=JSON.parse(event);
+            dispatch (postsActions.createPost(post));
+        });
+        socket.on('remove', (event) => {
+            const { data: post }=JSON.parse(event);
+            dispatch (postsActions.removePost(post));
         });
     },
 };

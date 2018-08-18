@@ -18,7 +18,7 @@ export function* signup ({ payload: userInfo }) {
         yield put(profileActions.fillProfile(profile));
         yield put(authAction.authenticate());
     } catch (error) {
-        yield put(uiActions.emitError(error, 'signup worker'));
+        yield put(uiActions.emitError(error, 'signup fetchUsers'));
     } finally {
         yield put(uiActions.stopFetching());
 

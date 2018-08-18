@@ -31,7 +31,7 @@ export function* likePost({ payload: postId }) {
         yield put (postsActions.likePost ({ liker, postId }));
     }
     catch (error) {
-        yield put (uiActions.emitError (error, 'likePost worker'));
+        yield put (uiActions.emitError (error, 'likePost fetchUsers'));
     }
     finally {
         yield put (uiActions.stopFetching ());

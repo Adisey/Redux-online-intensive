@@ -25,7 +25,7 @@ export function* fillPosts () {
         }
         yield put(postsActions.fillPosts(posts));
     } catch (error) {
-        yield put(uiActions.emitError(error, 'fillPosts worker'));
+        yield put(uiActions.emitError(error, 'fillPosts fetchUsers'));
     } finally {
         yield put(uiActions.stopFetching());
 

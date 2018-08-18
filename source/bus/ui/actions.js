@@ -11,9 +11,19 @@ export const uiActions ={
             type: type.STOP_FETCHING,
         };
     },
+    setOnlineState: () => {
+        return {
+            type: type.SET_ONLINE_STATE,
+        };
+    },
+    setOfflineState: () => {
+        return {
+            type: type.SET_OFFLINE_STATE,
+        };
+    },
     emitError: (error, meta = null) => {
         return {
-            type: type.EMIT_ERROR,
+            type:    type.EMIT_ERROR,
             payload: error,
             meta,
         };

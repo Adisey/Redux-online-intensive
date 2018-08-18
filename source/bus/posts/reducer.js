@@ -11,9 +11,8 @@ import { fromJS, List } from 'immutable';
 
 // Instruments
 import { type } from './types';
-debugger;
+
 const initalState = List();
-debugger;
 
 export const postsReducer = (state = initalState, action) => {
     switch (action.type) {

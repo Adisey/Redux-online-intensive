@@ -17,7 +17,7 @@ export function* worker () {
         }
 
     } catch (error) {
-        yield put(uiActions.emitError(error, 'worker Worker'));
+        yield put(uiActions.emitError(error, 'updateName Worker'));
     } finally {
         yield put(uiActions.stopFetching());
 

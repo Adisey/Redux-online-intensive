@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Form, Control } from 'react-redux-form';
 import cx from 'classnames';
-import { Map } from 'immutable';
+// import { Map } from 'immutable';
 
 // Instruments
 import Styles from './styles.m.css';
@@ -13,10 +13,9 @@ import { book } from '../../navigation/book';
 
 // Components
 import { Input } from '../../components';
-import { authAction } from "../../bus/auth/actions";
 
 // Actions
-// import { authAction } from '../../bus/auth/actions';
+import { profileActions } from '../../bus/profile/actions';
 
 const mapStateToProps = (state) => {
     console.log(`state (Login) ->`, state);
@@ -26,30 +25,27 @@ const mapStateToProps = (state) => {
         profile:    state.profile,
     };
 };
-// const mapDispathToProps = {
-//     loginAsync: authAction.loginAsync,
-// };
+const mapDispathToProps = profileActions;
 
 @connect(
     mapStateToProps,
-    // mapDispathToProps,
+    mapDispathToProps,
 )
 export default class Profile extends Component {
     static defaultProps = {
 
         // Actions
-        updateNameAsync:   () => {},
-        updateAvatarAsync: () => {},
+        updateAvatarAsync: () => { },
     };
 
     _submitUserInfo = (userInfo) => {
         const { updateNameAsync, updateAvatarAsync } = this.props;
 
-        if (userInfo.avatar.length) {
-            const { avatar } = userInfo;
-
-            updateAvatarAsync(avatar);
-        }
+        // if (userInfo.avatar.length) {
+        //     const { avatar } = userInfo;
+        //
+        //     updateAvatarAsync(avatar);
+        // }
 
         const { firstName, lastName } = userInfo;
 

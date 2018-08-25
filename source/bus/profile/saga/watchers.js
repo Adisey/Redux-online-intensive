@@ -1,11 +1,3 @@
-/**
- * Created by PhpStorm
- * Project p501-redux-online-intensive
- * User: Adisey
- * Date: 05.08.2018
- * Time: 11:29
- */
-
 // Core
 import { takeEvery, all, call } from 'redux-saga/effects';
 
@@ -13,12 +5,12 @@ import { takeEvery, all, call } from 'redux-saga/effects';
 import { type } from '../types';
 
 // Workers
-import { worker } from './workers';
+import { updateName } from './workers';
 
-function* watchWorker () {
-    yield takeEvery(type.TYPE, worker);
+function* watchUpdateName () {
+    yield takeEvery(type.UPDATE_NAME_ASYNC, updateName);
 }
 
-export function* watchDomain () {
-    yield all([call(watchWorker)]);
+export function* watchProfile () {
+    yield all([call(watchUpdateName)]);
 }

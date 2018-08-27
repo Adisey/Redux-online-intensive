@@ -89,6 +89,7 @@ export const api = {
     },
     profile: {
         updateProfile (profileInfo) {
+            // ToDo: Отключить когда разберусь, почему не меняется пароль
             debugger;
             return fetch(`${MAIN_URL}/user`, {
                 method:  'PUT',

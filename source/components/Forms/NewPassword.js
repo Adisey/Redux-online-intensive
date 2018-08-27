@@ -30,8 +30,6 @@ export default class NewPassword extends Component {
     static defaultProps = {
         // State
         isFetching: false,
-        // Actions
-        // updatePasswordAsync: () => {},
     };
 
     _submitPassword = (passwordData) => {

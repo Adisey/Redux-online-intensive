@@ -19,7 +19,7 @@ export function* updatePassword ({
             oldPassword, newPassword,
         }]);
         const { data: updateProfile, message } = yield apply(response, response.json);
-
+        // ToDo: Отключить когда разберусь, почему не меняется пароль 
         debugger;
         if (response.status !== 200) {
             throw new Error(message);

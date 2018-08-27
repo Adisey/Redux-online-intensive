@@ -18,8 +18,6 @@ import { Input } from '../../components';
 import { profileActions } from '../../bus/profile/actions';
 
 const mapStateToProps = (state) => {
-    console.log(`state (Login) ->`, state);
-
     return {
         isFetching: state.ui.get('isFetching'),
         profile:    state.profile,

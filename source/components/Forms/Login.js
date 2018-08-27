@@ -12,8 +12,6 @@ import { login } from '../../bus/forms/shapes';
 import { authAction } from '../../bus/auth/actions';
 
 const mapStateToProps = (state) => {
-    console.log(`state (Login) ->`, state);
-
     return {
         isFetching: state.ui.get('isFetching'),
     };

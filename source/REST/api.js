@@ -89,6 +89,7 @@ export const api = {
     },
     profile: {
         updateProfile (profileInfo) {
+            debugger;
             return fetch(`${MAIN_URL}/user`, {
                 method:  'PUT',
                 headers: {

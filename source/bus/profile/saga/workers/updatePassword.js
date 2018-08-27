@@ -24,7 +24,7 @@ export function* updatePassword ({
         if (response.status !== 200) {
             throw new Error(message);
         }
-        // yield put(profileActions.fillProfile(updateProfile));
+        yield put(profileActions.fillProfile(updateProfile));
     } catch (error) {
         yield put(uiActions.emitError(error, 'updatePassword worker'));
     } finally {

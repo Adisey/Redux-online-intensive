@@ -8,6 +8,12 @@ export const profileActions ={
             payload: profile,
         };
     },
+    updateAvatar: (newAvatarUrl) => {
+        return {
+            type:    type.UPDATE_AVATAR,
+            payload: newAvatarUrl,
+        };
+    },
     clearProfile: () => {
         return {
             type: type.CLEAR_PROFILE,
@@ -18,6 +24,12 @@ export const profileActions ={
         return {
             type:    type.UPDATE_NAME_ASYNC,
             payload: newName,
+        };
+    },
+    updateAvatarAsync: (newAvatar) => {
+        return {
+            type:    type.UPDATE_AVATAR_ASYNC,
+            payload: newAvatar,
         };
     },
 };

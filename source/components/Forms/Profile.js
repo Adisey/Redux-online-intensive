@@ -32,20 +32,20 @@ const mapDispathToProps = profileActions;
     mapDispathToProps,
 )
 export default class Profile extends Component {
-    static defaultProps = {
-
-        // Actions
-        updateAvatarAsync: () => { },
-    };
+    // static defaultProps = {
+    //
+    //     // Actions
+    //     updateAvatarAsync: () => { },
+    // };
 
     _submitUserInfo = (userInfo) => {
         const { updateNameAsync, updateAvatarAsync } = this.props;
 
-        // if (userInfo.avatar.length) {
-        //     const { avatar } = userInfo;
-        //
-        //     updateAvatarAsync(avatar);
-        // }
+        if (userInfo.avatar.length) {
+            const { avatar } = userInfo;
+
+            updateAvatarAsync(avatar);
+        }
 
         const { firstName, lastName } = userInfo;
 

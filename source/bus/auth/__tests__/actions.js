@@ -12,7 +12,7 @@ import { authAction } from '../actions';
 // Types
 import { type } from '../types';
 
-describe('Экшены аутентификации:', () => {
+describe('Экшены :', () => {
     test('authenticate', () => {
         expect(authAction.authenticate()).toEqual({
             type: type.AUTHENTICATE,

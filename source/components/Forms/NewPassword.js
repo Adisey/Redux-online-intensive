@@ -3,24 +3,42 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Formik, Form, Field } from 'formik';
 import cx from 'classnames';
+import { connect } from "react-redux";
 
 // Instruments
 import Styles from './styles.m.css';
 import { newPassword } from '../../bus/forms/shapes';
 import { book } from '../../navigation/book';
 
+// Actions
+import { profileActions } from '../../bus/profile/actions';
+
+const mapStateToProps = (state) => {
+    console.log(`state (Login) ->`, state);
+
+    return {
+        isFetching: state.ui.get('isFetching'),
+        profile:    state.profile,
+    };
+};
+const mapDispathToProps = profileActions;
+
+@connect(
+    mapStateToProps,
+    mapDispathToProps,
+)
+
 export default class NewPassword extends Component {
     static defaultProps = {
         // State
         isFetching: false,
-
         // Actions
-        updatePasswordAsync: () => {},
+        // updatePasswordAsync: () => {},
     };
 
     _submitPassword = (passwordData) => {
-        const { updatePasswordAsync } = this.props;
 
+        const { updatePasswordAsync } = this.props;
         updatePasswordAsync(passwordData);
     };
 

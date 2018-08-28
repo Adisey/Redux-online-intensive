@@ -7,6 +7,8 @@ const errorMessage = 'TEST_ERROR_MESSAGE.';
 const token = 'TEST_TOKEN';
 const error = new Error(errorMessage);
 
+const newAvatarUrl = 'NEW_AVATAR_URL';
+
 const users = [
     {
         avatar:    'USER1_AVATAR',
@@ -64,6 +66,7 @@ const fetchResponseFail400 = {
 const url = 'https://www.url.com';
 
 global.__ = {
+    newAvatarUrl,
     users,
     userProfile,
     errorMessage,

@@ -31,7 +31,7 @@ describe('Редюсер Users:', () => {
         expect(usersReducer(void 0, usersActions.clearUsers(__.users)))
             .toEqual(List([]));
     });
-
+    // ToDo: I do not like this.
     test('Получение FILL_USERS', () => {
         expect(usersReducer(void 0, usersActions.fillUsers(List(__.users))))
             .toEqual(List(__.users));

@@ -33,6 +33,19 @@ const userProfile = {
     token,
 };
 
+const newName = {
+    firstName: 'Walter',
+    lastName:  'White',
+};
+
+const newAvatar = ['avatar'];
+
+const newPassword = {
+    oldPassword: '12345',
+    newPassword: '123456',
+    token,
+};
+
 const credentials = {
     email:    'test@email.com',
     password: '1111',
@@ -67,6 +80,9 @@ const url = 'https://www.url.com';
 
 global.__ = {
     newAvatarUrl,
+    newAvatar,
+    newName,
+    newPassword,
     users,
     userProfile,
     errorMessage,

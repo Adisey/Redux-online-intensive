@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Экшены Profile: clearProfile Snapshot 1`] = `
+Object {
+  "type": "CLEAR_PROFILE",
+}
+`;
+
+exports[`Экшены Profile: fillProfile Snapshot 1`] = `
+Object {
+  "payload": Object {
+    "avatar": "TEST_AVATAR",
+    "firstName": "Walter",
+    "id": "TEST_ID",
+    "lastName": "White",
+    "token": "TEST_TOKEN",
+  },
+  "type": "FILL_PROFILE",
+}
+`;
+
+exports[`Экшены Profile: updateAvatar Snapshot 1  1`] = `
+Object {
+  "payload": "NEW_AVATAR_URL",
+  "type": "UPDATE_AVATAR",
+}
+`;
+
+exports[`Экшены Profile: updateAvatar Snapshot 2  1`] = `
+Object {
+  "payload": "https://www.url.com",
+  "type": "UPDATE_AVATAR",
+}
+`;
+
+exports[`Экшены Profile: updateAvatarAsync Snapshot 1`] = `
+Object {
+  "payload": Array [
+    "avatar",
+  ],
+  "type": "UPDATE_AVATAR_ASYNC",
+}
+`;
+
+exports[`Экшены Profile: updateNameAsync Snapshot 1`] = `
+Object {
+  "payload": Object {
+    "firstName": "Walter",
+    "lastName": "White",
+  },
+  "type": "UPDATE_NAME_ASYNC",
+}
+`;
+
+exports[`Экшены Profile: updatePasswordAsync Snapshot 1`] = `
+Object {
+  "payload": "Walter",
+  "type": "UPDATE_PASSWORD_ASYNC",
+}
+`;

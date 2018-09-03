@@ -11,6 +11,11 @@ import { profileActions } from '../actions';
 import { type } from '../types';
 
 describe('Экшены Profile:', () => {
+    test('fillProfile Snapshot', () => {
+        expect(profileActions.fillProfile(__.userProfile))
+            .toMatchSnapshot();
+    });
+
     test('fillProfile', () => {
         expect(profileActions.fillProfile(__.userProfile))
             .toEqual({
@@ -19,12 +24,27 @@ describe('Экшены Profile:', () => {
             });
     });
 
+    test('updateAvatar Snapshot 1 ', () => {
+        expect(profileActions.updateAvatar(__.newAvatarUrl))
+            .toMatchSnapshot();
+    });
+
+    test('updateAvatar Snapshot 2 ', () => {
+        expect(profileActions.updateAvatar(__.url))
+            .toMatchSnapshot();
+    });
+
     test('updateAvatar', () => {
         expect(profileActions.updateAvatar(__.newAvatarUrl))
             .toEqual({
                 type:    type.UPDATE_AVATAR,
                 payload: __.newAvatarUrl,
             });
+    });
+
+    test('clearProfile Snapshot', () => {
+        expect(profileActions.clearProfile())
+            .toMatchSnapshot();
     });
 
     test('clearProfile', () => {
@@ -42,6 +62,11 @@ describe('Экшены Profile:', () => {
             });
     });
 
+    test('updateNameAsync Snapshot', () => {
+        expect(profileActions.updateNameAsync(__.newName))
+            .toMatchSnapshot();
+    });
+
     test('updateAvatarAsync', () => {
         expect(profileActions.updateAvatarAsync(__.newAvatarUrl))
             .toEqual({
@@ -50,12 +75,22 @@ describe('Экшены Profile:', () => {
             });
     });
 
+    test('updateAvatarAsync Snapshot', () => {
+        expect(profileActions.updateAvatarAsync(__.newAvatar))
+            .toMatchSnapshot();
+    });
+
     test('updatePasswordAsync', () => {
         expect(profileActions.updatePasswordAsync(__.userProfile.firstName))
             .toEqual({
                 type:    type.UPDATE_PASSWORD_ASYNC,
                 payload: __.userProfile.firstName,
             });
+    });
+
+    test('updatePasswordAsync Snapshot', () => {
+        expect(profileActions.updatePasswordAsync(__.userProfile.firstName))
+            .toMatchSnapshot();
     });
 
 });

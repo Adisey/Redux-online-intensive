@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Экшены UI Snapshot: emitError - meta=null Snapshot 1`] = `
+Object {
+  "meta": null,
+  "payload": [Error: TEST_ERROR_MESSAGE.],
+  "type": "EMIT_ERROR",
+}
+`;
+
+exports[`Экшены UI Snapshot: emitError Snapshot 1`] = `
+Object {
+  "meta": "TEST_ERROR_MESSAGE.",
+  "payload": [Error: TEST_ERROR_MESSAGE.],
+  "type": "EMIT_ERROR",
+}
+`;
+
+exports[`Экшены UI Snapshot: setOfflineState Snapshot 1`] = `
+Object {
+  "type": "SET_OFFLINE_STATE",
+}
+`;
+
+exports[`Экшены UI Snapshot: setOnlineState Snapshot 1`] = `
+Object {
+  "type": "SET_ONLINE_STATE",
+}
+`;
+
+exports[`Экшены UI Snapshot: startFetching Snapshot 1`] = `
+Object {
+  "type": "START_FETCHING",
+}
+`;
+
+exports[`Экшены UI Snapshot: stopFetching Snapshot 1`] = `
+Object {
+  "type": "STOP_FETCHING",
+}
+`;

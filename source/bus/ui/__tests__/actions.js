@@ -58,5 +58,37 @@ describe('Экшены UI:', () => {
                 meta:    null,
             });
     });
-
 });
+
+describe('Экшены UI Snapshot:', () => {
+    test('startFetching Snapshot', () => {
+        expect(uiActions.startFetching())
+            .toMatchSnapshot();
+    });
+
+    test('stopFetching Snapshot', () => {
+        expect(uiActions.stopFetching())
+            .toMatchSnapshot();
+    });
+
+    test('setOnlineState Snapshot', () => {
+        expect(uiActions.setOnlineState())
+            .toMatchSnapshot();
+    });
+
+    test('setOfflineState Snapshot', () => {
+        expect(uiActions.setOfflineState())
+            .toMatchSnapshot();
+    });
+
+    test('emitError Snapshot', () => {
+        expect(uiActions.emitError(__.error, __.errorMessage))
+            .toMatchSnapshot();
+    });
+
+    test('emitError - meta=null Snapshot', () => {
+        expect(uiActions.emitError(__.error))
+            .toMatchSnapshot();
+    });
+});
+

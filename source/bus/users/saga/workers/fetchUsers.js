@@ -18,6 +18,7 @@ export function* fetchUsers () {
         }
 
         yield put(usersActions.fillUsers(users));
+        console.log(`users ->`, users);
     } catch (error) {
         yield put(uiActions.emitError(error, 'fetchUsers updateName'));
     } finally {

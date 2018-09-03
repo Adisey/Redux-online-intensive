@@ -9,6 +9,7 @@ import { profileActions } from '../../../profile/actions';
 export function* signup ({ payload: userInfo }) {
     try {
         yield put(uiActions.startFetching());
+
         const response = yield apply(api, api.auth.signup, [userInfo]);
         const { data: profile, message } = yield apply(response, response.json);
 

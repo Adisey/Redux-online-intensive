@@ -2,32 +2,32 @@
  * Created by PhpStorm
  * Project p501-redux-online-intensive
  * User: Adisey
- * Date: 03.09.2018
- * Time: 21:02
+ * Date: 04.09.2018
+ * Time: 0:03
  */
 // Core
 import { put, apply } from "redux-saga/effects";
 import { cloneableGenerator } from "redux-saga/utils";
 
+// Instruments
 import { api } from "../../../REST";
-import { authAction } from "../../auth/actions";
 import { uiActions } from "../../ui/actions";
-import { signup } from "../saga/workers";
+import { usersActions } from "../../users/actions";
+import { fetchUsers } from "../saga/workers";
 
-const signupAction = authAction.signupAsync(__.userProfile);
-const saga = cloneableGenerator(signup)(signupAction);
+const fetchUsersActions = usersActions.fetchUsersAsync();
+const saga = cloneableGenerator(fetchUsers)(fetchUsersActions);
 let clone = null;
 
-describe(`Signup Saga Worker`, () => {
+describe(`FetchUsers Saga Worker`, () => {
     describe("До запроса к серверу", () => {
         test(`Должен запуститься экшен "StartFetching"`, () => {
             expect(saga.next().value).toEqual(put(uiActions.startFetching()));
         });
 
         test(`Должен запуститься fetch запрос"`, () => {
-            expect(saga.next().value).toEqual(
-                apply(api, api.auth.signup, [__.userProfile])
-            );
+            expect(saga.next().value).toEqual(apply(api, api.users.fetch, []));
+            // ToDo: Мне не понятно почему я проверниваю к пустому массиву
             clone = saga.clone();
         });
     });
@@ -41,7 +41,7 @@ describe(`Signup Saga Worker`, () => {
 
         test(`Получение ответа с объектом ошибки `, () => {
             expect(clone.next(__.responseDataFail).value).toEqual(
-                put(uiActions.emitError(__.error, "signup fetchUsers"))
+                put(uiActions.emitError(__.error, "fetchUsers updateName"))
             );
         });
 
@@ -56,39 +56,33 @@ describe(`Signup Saga Worker`, () => {
 
     describe("Ответ сервера успешным статусом 200", () => {
         test(`Fetch запрос вернул статус 200`, () => {
-            expect(saga.next(__.fetchResponseSuccess).value).toEqual(
-                apply(__.fetchResponseSuccess, __.fetchResponseSuccess.json)
+            expect(saga.next(__.fetchResponseSuccessUsers).value).toEqual(
+                apply(__.fetchResponseSuccessUsers, __.fetchResponseSuccessUsers.json)
             );
         });
 
-        test(`Проверяем єкшен "fillProfile"`, () => {
-            expect(saga.next(__.responseDataSuccess).value).toMatchInlineSnapshot(`
+        test(`Проверяем єкшен "fillUsers"`, () => {
+            expect(saga.next(__.responseDataSuccessUsers).value)
+                .toMatchInlineSnapshot(`
 Object {
   "@@redux-saga/IO": true,
   "PUT": Object {
     "action": Object {
-      "payload": Object {
-        "avatar": "TEST_AVATAR",
-        "firstName": "Walter",
-        "id": "TEST_ID",
-        "lastName": "White",
-        "token": "TEST_TOKEN",
-      },
-      "type": "FILL_PROFILE",
-    },
-    "channel": null,
-  },
-}
-`);
-        });
-
-        test(`Проверяем єкшен "authenticate"`, () => {
-            expect(saga.next().value).toMatchInlineSnapshot(`
-Object {
-  "@@redux-saga/IO": true,
-  "PUT": Object {
-    "action": Object {
-      "type": "AUTHENTICATE",
+      "payload": Array [
+        Object {
+          "avatar": "USER1_AVATAR",
+          "firstName": "USER1_firstName",
+          "id": "USER1_ID",
+          "lastName": "USER1_lastName",
+        },
+        Object {
+          "avatar": "USER2_AVATAR",
+          "firstName": "USER2_firstName",
+          "id": "USER2_ID",
+          "lastName": "USER2_lastName",
+        },
+      ],
+      "type": "FILL_USERS",
     },
     "channel": null,
   },
@@ -103,6 +97,5 @@ Object {
         test(`Последний шаг генератора`, () => {
             expect(saga.next().done).toBe(true);
         });
-
     });
 });

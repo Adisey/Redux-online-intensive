@@ -22,8 +22,19 @@ const users = [
         id:        'USER2_ID',
         lastName:  'USER2_lastName',
     }
-
 ];
+
+const responseDataSuccessUsers = {
+    data:    users,
+    message: successMesasge,
+};
+
+const fetchResponseSuccessUsers = {
+    status: 200,
+    json:   jest.fn(() => Promise.resolve(responseDataSuccessUsers)),
+};
+
+
 
 const userProfile = {
     id:        'TEST_ID',
@@ -66,6 +77,7 @@ const fetchResponseSuccess = {
     json:   jest.fn(() => Promise.resolve(responseDataSuccess)),
 };
 
+
 const fetchResponseFail401 = {
     status: 401,
     json:   jest.fn(() => Promise.resolve(responseDataFail)),
@@ -89,10 +101,12 @@ global.__ = {
     token,
     error,
     responseDataSuccess,
+    responseDataSuccessUsers,
     responseDataFail,
     fetchResponseSuccess,
     fetchResponseFail401,
     fetchResponseFail400,
+    fetchResponseSuccessUsers,
     credentials,
     url,
 };

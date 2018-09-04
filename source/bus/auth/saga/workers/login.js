@@ -6,6 +6,7 @@ import { api } from '../../../../REST/index';
 import { authAction } from '../../../auth/actions';
 import { uiActions } from '../../../ui/actions';
 import { profileActions } from "../../../profile/actions";
+import { notificationActions } from "../../../notification/actions";
 
 export function* login ({ payload: credentials }) {
     try {
@@ -25,8 +26,15 @@ export function* login ({ payload: credentials }) {
         yield put(actions.change('forms.user.profile.firstName', profile.firstName));
         yield put(actions.change('forms.user.profile.lastName', profile.lastName));
         yield put(authAction.authenticate());
+        yield put(notificationActions.showNotification('Добро пожаловать!'));
     } catch (error) {
         yield put(uiActions.emitError(error, 'Login fetchUsers'));
+        yield put(notificationActions.showNotification(
+            'Неправильтные Login или Пароль!',
+            'error',
+            'loginWorker'
+            ),
+        );
     } finally {
         yield put(uiActions.stopFetching());
 

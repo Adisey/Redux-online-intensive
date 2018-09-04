@@ -11,6 +11,7 @@ import { profileActions } from "../../../profile/actions";
 import { postsActions } from "../../../posts/actions";
 import { usersActions } from "../../../users/actions";
 import { book } from '../../../../navigation/book';
+import { notificationActions } from "../../../notification/actions";
 
 export function* logout () {
     try {
@@ -26,6 +27,7 @@ export function* logout () {
     } catch (error) {
         yield put(uiActions.emitError(error, 'Logout fetchUsers'));
     } finally {
+        yield put(notificationActions.showNotification('Приходите ещё!'));
         yield apply(localStorage, localStorage.removeItem, ['token']);
         yield apply(localStorage, localStorage.removeItem, ['remember']);
         yield put(profileActions.clearProfile());

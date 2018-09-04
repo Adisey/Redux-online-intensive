@@ -12,6 +12,7 @@ import { put, apply } from 'redux-saga/effects';
 import { api } from '../../../../REST';
 import { postsActions } from '../../actions';
 import { uiActions } from '../../../ui/actions';
+import { notificationActions } from "../../../notification/actions";
 
 export function* createPost ({ payload: comment }) {
     try {
@@ -24,8 +25,17 @@ export function* createPost ({ payload: comment }) {
             throw new Error(message);
         }
         yield put(postsActions.createPost(post));
+        yield put(notificationActions.showNotification('Пост отправлен!'));
+
     } catch (error) {
         yield put(uiActions.emitError(error, 'createPost fetchUsers'));
+        yield put(notificationActions.showNotification(
+            'Проблема с отправеой поста!',
+            'error',
+            'createPost worker'
+            ),
+        );
+
     } finally {
         yield put(uiActions.stopFetching());
 

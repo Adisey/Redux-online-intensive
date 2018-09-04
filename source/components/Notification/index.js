@@ -1,22 +1,27 @@
 // Core
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Transition } from 'react-transition-group';
 import gsap from 'gsap';
 import cx from 'classnames';
-import { Map } from 'immutable';
+
+// Action
+import { notificationActions } from '../../bus/notification/actions';
 
 // Instruments
 import Styles from './styles.m.css';
 
-export default class Notification extends Component {
-    static defaultProps = {
-        // State
-        notification: Map(),
-
-        // Actions:
-        hideNotification: () => {},
+const mapState = (state) => {
+    return {
+        notification: state.notification,
     };
+};
 
+@connect(
+    mapState,
+    notificationActions,
+)
+export default class Notification extends Component {
     state = {
         notificationIn: true,
     };

@@ -29,7 +29,7 @@ export function* authenticate () {
 
         yield put(authAction.authenticate());
     } catch (error) {
-        yield put(uiActions.emitError(error, 'Authenticate fetchUsers'));
+        yield put(uiActions.emitError(error, 'Authenticate Login worker'));
     } finally {
         yield put(uiActions.stopFetching());
         yield put(authAction.initialialze());

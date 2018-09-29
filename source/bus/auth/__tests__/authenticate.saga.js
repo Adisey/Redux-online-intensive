@@ -70,7 +70,7 @@ Object {
   "@@redux-saga/IO": true,
   "PUT": Object {
     "action": Object {
-      "meta": "Authenticate fetchUsers",
+      "meta": "Authenticate Login worker",
       "payload": [TypeError: Cannot destructure property \`data\` of 'undefined' or 'null'.],
       "type": "EMIT_ERROR",
     },

@@ -41,4 +41,13 @@ describe(`Authenticate Saga (redux-saga-test-plan)`, () => {
             .put(authAction.initialialze())
             .run();
     });
+    test(`Проверка сценария с ответом сервера статусом 400`, async () => {
+        await expectSaga(authenticate)
+            .put(uiActions.startFetching())
+            .provide([[apply(api, api.auth.authenticate), __.fetchResponseFail400]])
+            .put(uiActions.emitError(__.error, 'Authenticate Login worker'))
+            .put(uiActions.stopFetching())
+            .put(authAction.initialialze())
+            .run();
+    });
 });

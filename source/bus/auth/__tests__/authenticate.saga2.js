@@ -17,7 +17,7 @@ import { profileActions } from '../../profile/actions';
 import { authenticate } from "../saga/workers";
 
 describe(`Authenticate Saga (redux-saga-test-plan)`, () => {
-    test(`Ответ сервера успешным статусом 200`, async () => {
+    test(`Проверка сценария с ответом сервера статусом 200`, async () => {
         await expectSaga(authenticate)
             .put(uiActions.startFetching())
             .provide([[apply(api, api.auth.authenticate), __.fetchResponseSuccess]])
@@ -26,6 +26,17 @@ describe(`Authenticate Saga (redux-saga-test-plan)`, () => {
             .put(actions.change('forms.user.profile.lastName', __.userProfile.lastName))
             .put(profileActions.fillProfile(__.userProfile))
             .put(authAction.authenticate())
+            .put(uiActions.stopFetching())
+            .put(authAction.initialialze())
+            .run();
+    });
+    test(`Проверка сценария с ответом сервера статусом 401`, async () => {
+        await expectSaga(authenticate)
+            .put(uiActions.startFetching())
+            .provide([[apply(api, api.auth.authenticate), __.fetchResponseFail401]])
+            .apply(localStorage, localStorage.removeItem, ['token'])
+            .apply(localStorage, localStorage.removeItem, ['remember'])
+            .returns(null)
             .put(uiActions.stopFetching())
             .put(authAction.initialialze())
             .run();

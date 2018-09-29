@@ -12,6 +12,7 @@ import { MAIN_URL, groupId } from './config';
 
 export const api = {
     get token () {
+        console.log(`API -> localStorage.getItem('token') ->`, localStorage.getItem('token'));
         return localStorage.getItem('token');
     },
     auth: {

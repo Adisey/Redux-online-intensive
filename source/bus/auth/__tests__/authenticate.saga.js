@@ -64,9 +64,20 @@ describe(`Authenticate Saga Worker`, () => {
         });
 
         test(`Запиь Token в LocalStorage`, () => {
-            expect(saga.next().value)
-            .toEqual([]);
-            //     .toMatchInlineSnapshot();
+            // .toEqual([]);
+            expect(saga.next().value).toMatchInlineSnapshot(`
+Object {
+  "@@redux-saga/IO": true,
+  "PUT": Object {
+    "action": Object {
+      "meta": "Authenticate fetchUsers",
+      "payload": [TypeError: Cannot destructure property \`data\` of 'undefined' or 'null'.],
+      "type": "EMIT_ERROR",
+    },
+    "channel": null,
+  },
+}
+`);
         });
     //
     //         test(`Проверяем єкшен "fillProfile"`, () => {

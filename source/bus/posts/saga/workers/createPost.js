@@ -33,7 +33,7 @@ export function* createPost ({ payload: comment }) {
             'Проблема с отправеой поста!',
             'error',
             'createPost worker'
-            ),
+        ),
         );
 
     } finally {

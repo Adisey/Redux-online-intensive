@@ -25,7 +25,7 @@ export function* logout () {
             throw new Error(message);
         }
     } catch (error) {
-        yield put(uiActions.emitError(error, 'Logout fetchUsers'));
+        yield put(uiActions.emitError(error, 'Logout worker error'));
     } finally {
         yield put(notificationActions.showNotification('Приходите ещё!'));
         yield apply(localStorage, localStorage.removeItem, ['token']);

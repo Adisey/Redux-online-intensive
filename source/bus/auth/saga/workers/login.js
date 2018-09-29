@@ -20,21 +20,21 @@ export function* login ({ payload: credentials }) {
 
         if (credentials.remember) {
             yield apply(localStorage, localStorage.setItem, ['remember', true]);
+            yield apply(localStorage, localStorage.setItem, ['token', profile.token]);
         }
-        yield apply(localStorage, localStorage.setItem, ['token', profile.token]);
         yield put(profileActions.fillProfile(profile));
         yield put(actions.change('forms.user.profile.firstName', profile.firstName));
         yield put(actions.change('forms.user.profile.lastName', profile.lastName));
         yield put(authAction.authenticate());
-        yield put(notificationActions.showNotification('Добро пожаловать!'));
+        // yield put(notificationActions.showNotification('Добро пожаловать!'));
     } catch (error) {
-        yield put(uiActions.emitError(error, 'Login fetchUsers'));
-        yield put(notificationActions.showNotification(
-            'Неправильтные Login или Пароль!',
-            'error',
-            'loginWorker'
-            ),
-        );
+        yield put(uiActions.emitError(error, 'Login worker failed'));
+        // yield put(notificationActions.showNotification(
+        //     'Неправильтные Login или Пароль!',
+        //     'error',
+        //     'loginWorker'
+        //     ),
+        // );
     } finally {
         yield put(uiActions.stopFetching());
 
